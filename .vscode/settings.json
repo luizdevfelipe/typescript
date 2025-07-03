@@ -1,0 +1,5 @@
+{
+  "code-runner.executorMap": {
+    "typescript": "docker exec typescript_app sh /app/run.sh src/index.ts"
+  }
+}
