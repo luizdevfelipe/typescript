@@ -13,7 +13,7 @@ export class MainDishBuilder implements MealBuilderContract {
         return this;
     }
 
-    makeBaverage(): this {
+    makeBeverage(): this {
         const beverage = new Beverage('Refrigerante', 5);
         this._meal.addChild(beverage);
         return this;
