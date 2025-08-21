@@ -1,4 +1,4 @@
-import { SmartHouseCommand } from "./command";
+import { SmartHouseCommand } from "./smart-house-command";
 import { SmartHouseLight } from "./smart-house-light";
 
 export class LightPowerCommand implements SmartHouseCommand{
