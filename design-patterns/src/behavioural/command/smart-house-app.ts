@@ -1,4 +1,4 @@
-import { SmartHouseCommand } from "./command";
+import { SmartHouseCommand } from "./smart-house-command";
 
 export class SmartHouseApp {
     private commands: { [k: string]: SmartHouseCommand } = {};
