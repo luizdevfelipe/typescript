@@ -4,7 +4,7 @@ import { CustomerBudget } from "./customer-budget";
 export abstract class BaseBudgetHandler {
     protected nextHandler: BaseBudgetHandler | null = null;
 
-    setNext(handler: BaseBudgetHandler): BaseBudgetHandler {
+    setNextHandler(handler: BaseBudgetHandler): BaseBudgetHandler {
         this.nextHandler = handler;
         return handler;
     }
