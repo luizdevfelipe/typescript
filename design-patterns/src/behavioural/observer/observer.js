@@ -1,6 +1,8 @@
+// npx tsc src/behavioural/observer/observer.ts -w
+// Concrete Observable
 var InputObservable = /** @class */ (function () {
-    function InputObservable(input) {
-        this.input = input;
+    function InputObservable(element) {
+        this.element = element;
         this.observers = [];
     }
     InputObservable.prototype.subscribe = function () {
@@ -26,3 +28,52 @@ var InputObservable = /** @class */ (function () {
     };
     return InputObservable;
 }());
+// Concrete Observer
+var ParagraphObserver = /** @class */ (function () {
+    function ParagraphObserver(element) {
+        this.element = element;
+    }
+    ParagraphObserver.prototype.update = function (observable) {
+        if (observable instanceof InputObservable) {
+            this.element.innerText = observable.element.value;
+        }
+    };
+    return ParagraphObserver;
+}());
+var DivObserver = /** @class */ (function () {
+    function DivObserver(element) {
+        this.element = element;
+    }
+    DivObserver.prototype.update = function (observable) {
+        if (observable instanceof InputObservable) {
+            this.element.innerText = observable.element.value;
+        }
+    };
+    return DivObserver;
+}());
+// CLIENTE CODE
+function makeInput() {
+    var input = document.createElement('input');
+    document.body.appendChild(input);
+    return input;
+}
+function makeParagraph() {
+    var p = document.createElement('p');
+    document.body.appendChild(p);
+    p.innerText = 'Texto inicial';
+    return p;
+}
+function makeDiv() {
+    var div = document.createElement('div');
+    document.body.appendChild(div);
+    div.innerText = 'Texto em div';
+    return div;
+}
+var input = new InputObservable(makeInput());
+var p1 = new ParagraphObserver(makeParagraph());
+var p2 = new ParagraphObserver(makeParagraph());
+var div = new DivObserver(makeDiv());
+input.subscribe(p1, p2, div);
+input.element.addEventListener('input', function () {
+    input.notify();
+});
