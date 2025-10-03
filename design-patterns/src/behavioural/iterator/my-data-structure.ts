@@ -21,8 +21,11 @@ export class MyDataStructure {
         this.iterator = iterator;
     }
 
-    [Symbol.iterator](): MyIteratorProtocol<string> {
+    resetIterator(): void {
         this.iterator.reset();
+    }
+
+    [Symbol.iterator](): MyIteratorProtocol<string> {
         return this.iterator;
     }
 }
